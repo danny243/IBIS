@@ -19,9 +19,9 @@
 // die Zeilen benötigen einen Port (8 Pins)
 
 //  COL Pins 1..3 <-->   PORTC Bit PD0-PD2
-#define SWITCH_COL_PORT  PORTC
-#define SWITCH_COL_DDR   DDRC
-#define SWITCH_COL_PIN   PINC
+#define SWITCH_COL_PORT  PORTA
+#define SWITCH_COL_DDR   DDRA
+#define SWITCH_COL_PIN   PINA
 
 //  ROW Pins 6..13 <-->   PORTD Bit PD0-PD7
 #define SWITCH_ROW_PORT  PORTD
