@@ -17,7 +17,7 @@ void col_init(void)
     SWITCH_ROW_DDR   = 0xFF;
     SWITCH_ROW_PORT  = 0x00;
     
-    _delay_ms(1);
+    _delay_us(10);
 }
 
 void row_init(void)
@@ -28,7 +28,7 @@ void row_init(void)
     SWITCH_ROW_DDR   = 0x00;
     SWITCH_ROW_PORT  = 0xFF;
     
-    _delay_ms(1);
+    _delay_us(10);
 }
 
 unsigned char read_key(void)
@@ -69,6 +69,6 @@ unsigned char read_key(void)
         {value += 0x16;}
     
     // Entprellen
-    _delay_ms(50);
+    _delay_ms(25);
     return value;
 }

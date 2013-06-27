@@ -302,13 +302,14 @@ int main(void)
                             uint8_t i;
                             
                             i = input / 100;
-                            if (!((i == 1) | i == 2) | (i == 3) | (i ==6)) 
+                            switch (i)
                             {
-                                display_message(1);
-                            } else {
-                                linie = input / 100;
-                                kurs = input % 100;
-                            }                            
+                                case 1:  { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 2:  { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 3:  { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 6:  { linie = i; kurs = input % 100; ziel = 0; break; }
+                                default: { display_message(1); }
+                            }
                             
                             grundbild();
                             input = 0;
