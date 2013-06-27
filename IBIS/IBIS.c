@@ -44,76 +44,147 @@ uint8_t  kurs;
 uint8_t  route;
 uint16_t ziel;
 uint8_t  hst;
+uint8_t  hstindex;
 
 
 uint8_t get_haltestellen_index()
 {
     if (linie == 1)
     {
-        if (route ==  1) { return pgm_read_byte (&u1_01 [hst-1]); }
-        if (route ==  2) { return pgm_read_byte (&u1_02 [hst-1]); }
-        if (route ==  3) { return pgm_read_byte (&u1_03 [hst-1]); }
-        if (route ==  4) { return pgm_read_byte (&u1_04 [hst-1]); }
-        if (route ==  7) { return pgm_read_byte (&u1_07 [hst-1]); }
-        if (route ==  8) { return pgm_read_byte (&u1_08 [hst-1]); }
-        if (route == 11) { return pgm_read_byte (&u1_11 [hst-1]); }
-        if (route == 12) { return pgm_read_byte (&u1_12 [hst-1]); }
+        switch (route)
+        {
+            case  1: if (sizeof(u1_01) < hst) { hst--; return hstindex; } 
+                else { return pgm_read_byte (&u1_01 [hst-1]); }
+            case  2: if (sizeof(u1_02) < hst) { hst--; return hstindex; } 
+                else { return pgm_read_byte (&u1_02 [hst-1]); }
+            case  3: if (sizeof(u1_03) < hst) { hst--; return hstindex; } 
+                else { return pgm_read_byte (&u1_03 [hst-1]); }
+            case  4: if (sizeof(u1_04) < hst) { hst--; return hstindex; } 
+                else { return pgm_read_byte (&u1_04 [hst-1]); }
+            case  7: if (sizeof(u1_07) < hst) { hst--; return hstindex; } 
+                else { return pgm_read_byte (&u1_07 [hst-1]); }
+            case  8: if (sizeof(u1_08) < hst) { hst--; return hstindex; } 
+                else { return pgm_read_byte (&u1_08 [hst-1]); }
+            case 11: if (sizeof(u1_11) < hst) { hst--; return hstindex; } 
+                else { return pgm_read_byte (&u1_11 [hst-1]); }
+            case 12: if (sizeof(u1_12) < hst) { hst--; return hstindex; } 
+                else { return pgm_read_byte (&u1_12 [hst-1]); }
+        }
     }
+
     if (linie == 2)
     {
-        if (route ==  1) { return pgm_read_byte (&u2_01 [hst-1]); }
-        if (route ==  2) { return pgm_read_byte (&u2_02 [hst-1]); }
-        if (route ==  3) { return pgm_read_byte (&u2_03 [hst-1]); }
-        if (route ==  5) { return pgm_read_byte (&u2_05 [hst-1]); }
-        if (route ==  6) { return pgm_read_byte (&u2_06 [hst-1]); }
-        if (route ==  7) { return pgm_read_byte (&u2_07 [hst-1]); }
-        if (route ==  8) { return pgm_read_byte (&u2_08 [hst-1]); }
-        if (route ==  9) { return pgm_read_byte (&u2_09 [hst-1]); }
-        if (route == 10) { return pgm_read_byte (&u2_10 [hst-1]); }
-        if (route == 11) { return pgm_read_byte (&u2_11 [hst-1]); }
-        if (route == 12) { return pgm_read_byte (&u2_12 [hst-1]); }
-        if (route == 17) { return pgm_read_byte (&u2_17 [hst-1]); }
-        if (route == 18) { return pgm_read_byte (&u2_18 [hst-1]); }
+        switch (route)
+        {
+            case  1: if (sizeof(u2_01) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_01 [hst-1]); }
+            case  2: if (sizeof(u2_02) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_02 [hst-1]); }
+            case  3: if (sizeof(u2_03) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_03 [hst-1]); }
+            case  5: if (sizeof(u2_05) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_05 [hst-1]); }
+            case  6: if (sizeof(u2_06) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_06 [hst-1]); }
+            case  7: if (sizeof(u2_07) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_07 [hst-1]); }
+            case  8: if (sizeof(u2_08) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_08 [hst-1]); }
+            case  9: if (sizeof(u2_09) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_09 [hst-1]); }
+            case 10: if (sizeof(u2_10) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_10 [hst-1]); }
+            case 11: if (sizeof(u2_11) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_11 [hst-1]); }
+            case 12: if (sizeof(u2_12) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_12 [hst-1]); }
+            case 17: if (sizeof(u2_17) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_17 [hst-1]); }
+            case 18: if (sizeof(u2_18) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u2_18 [hst-1]); }
+        }
     }
+    
     if (linie == 3)
     {
-        if (route ==  1) { return pgm_read_byte (&u3_01 [hst-1]); }
-        if (route ==  2) { return pgm_read_byte (&u3_02 [hst-1]); }
-        if (route ==  3) { return pgm_read_byte (&u3_03 [hst-1]); }
-        if (route ==  4) { return pgm_read_byte (&u3_04 [hst-1]); }
-        if (route ==  5) { return pgm_read_byte (&u3_05 [hst-1]); }
-        if (route ==  6) { return pgm_read_byte (&u3_06 [hst-1]); }
-        if (route ==  7) { return pgm_read_byte (&u3_07 [hst-1]); }
-        if (route ==  8) { return pgm_read_byte (&u3_08 [hst-1]); }
-        if (route ==  9) { return pgm_read_byte (&u3_09 [hst-1]); }
-        if (route == 10) { return pgm_read_byte (&u3_10 [hst-1]); }
-        if (route == 11) { return pgm_read_byte (&u3_11 [hst-1]); }
-        if (route == 12) { return pgm_read_byte (&u3_12 [hst-1]); }
-        if (route == 13) { return pgm_read_byte (&u3_13 [hst-1]); }
-        if (route == 17) { return pgm_read_byte (&u3_17 [hst-1]); }
-        if (route == 18) { return pgm_read_byte (&u3_18 [hst-1]); }
-    }
+        switch (route)
+        {
+            case  1: if (sizeof(u3_01) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_01 [hst-1]); }
+            case  2: if (sizeof(u3_02) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_02 [hst-1]); }
+            case  3: if (sizeof(u3_03) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_03 [hst-1]); }
+            case  4: if (sizeof(u3_04) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_04 [hst-1]); }
+            case  5: if (sizeof(u3_05) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_05 [hst-1]); }
+            case  6: if (sizeof(u3_06) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_06 [hst-1]); }
+            case  7: if (sizeof(u3_07) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_07 [hst-1]); }
+            case  8: if (sizeof(u3_08) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_08 [hst-1]); }
+            case  9: if (sizeof(u3_09) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_09 [hst-1]); }
+            case 10: if (sizeof(u3_10) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_10 [hst-1]); }
+            case 11: if (sizeof(u3_11) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_11 [hst-1]); }
+            case 12: if (sizeof(u3_12) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_12 [hst-1]); }
+            case 13: if (sizeof(u3_13) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_13 [hst-1]); }
+            case 17: if (sizeof(u3_17) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_17 [hst-1]); }
+            case 18: if (sizeof(u3_18) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u3_18 [hst-1]); }
+        }
+    }    
+
     if (linie == 6)
     {
-        if (route ==  3) { return pgm_read_byte (&u6_03 [hst-1]); }
-        if (route ==  4) { return pgm_read_byte (&u6_04 [hst-1]); }
-        if (route ==  5) { return pgm_read_byte (&u6_05 [hst-1]); }
-        if (route ==  6) { return pgm_read_byte (&u6_06 [hst-1]); }
-        if (route ==  7) { return pgm_read_byte (&u6_07 [hst-1]); }
-        if (route ==  8) { return pgm_read_byte (&u6_08 [hst-1]); }
-        if (route ==  9) { return pgm_read_byte (&u6_09 [hst-1]); }
-        if (route == 10) { return pgm_read_byte (&u6_10 [hst-1]); }
-        if (route == 11) { return pgm_read_byte (&u6_11 [hst-1]); }
-        if (route == 12) { return pgm_read_byte (&u6_12 [hst-1]); }
-        if (route == 13) { return pgm_read_byte (&u6_13 [hst-1]); }
-        if (route == 14) { return pgm_read_byte (&u6_14 [hst-1]); }
-        if (route == 15) { return pgm_read_byte (&u6_15 [hst-1]); }
-        if (route == 16) { return pgm_read_byte (&u6_16 [hst-1]); }
-        if (route == 17) { return pgm_read_byte (&u6_17 [hst-1]); }
-        if (route == 18) { return pgm_read_byte (&u6_18 [hst-1]); }
-        if (route == 19) { return pgm_read_byte (&u6_19 [hst-1]); }
-        if (route == 20) { return pgm_read_byte (&u6_20 [hst-1]); }
-        if (route == 21) { return pgm_read_byte (&u6_21 [hst-1]); }
+        switch (route)
+        {
+            case  3: if (sizeof(u6_03) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_03 [hst-1]); }
+            case  4: if (sizeof(u6_04) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_04 [hst-1]); }
+            case  5: if (sizeof(u6_05) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_05 [hst-1]); }
+            case  6: if (sizeof(u6_06) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_06 [hst-1]); }
+            case  7: if (sizeof(u6_07) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_07 [hst-1]); }
+            case  8: if (sizeof(u6_08) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_08 [hst-1]); }
+            case  9: if (sizeof(u6_09) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_09 [hst-1]); }
+            case 10: if (sizeof(u6_10) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_10 [hst-1]); }
+            case 11: if (sizeof(u6_11) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_11 [hst-1]); }
+            case 12: if (sizeof(u6_12) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_12 [hst-1]); }
+            case 13: if (sizeof(u6_13) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_13 [hst-1]); }
+            case 14: if (sizeof(u6_14) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_14 [hst-1]); }
+            case 15: if (sizeof(u6_15) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_15 [hst-1]); }
+            case 16: if (sizeof(u6_16) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_16 [hst-1]); }
+            case 17: if (sizeof(u6_17) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_17 [hst-1]); }
+            case 18: if (sizeof(u6_18) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_18 [hst-1]); }
+            case 19: if (sizeof(u6_19) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_19 [hst-1]); }
+            case 20: if (sizeof(u6_20) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_20 [hst-1]); }
+            case 21: if (sizeof(u6_21) < hst) { hst--; return hstindex; }
+                else { return pgm_read_byte (&u6_21 [hst-1]); }
+        }
     }
     
     return 0;
@@ -154,7 +225,8 @@ void grundbild()
     {
         strcpy_P(hstbuffer, haltestellen[ziel]);
     } else {
-        strcpy_P(hstbuffer, haltestellen[get_haltestellen_index()]);
+        hstindex = get_haltestellen_index();
+        strcpy_P(hstbuffer, haltestellen[hstindex]);
     }
     
     lcd_string(hstbuffer);
@@ -216,6 +288,7 @@ int main(void)
     hst = 0;
     route = 0;
     ziel = 0;
+    hstindex = 0;
     
     // LCD auf Grundfunktion setzen
     lcd_init();
@@ -274,9 +347,12 @@ int main(void)
                     }
                     if (key == 17)
                     {
-                        // Hst zurück, ohne Ton
-                        hst--;
-                        grundbild();
+                        // Hst zurück, mit Ton
+                        if (hst > 1)
+                        {
+                            hst--;
+                            grundbild();
+                        }                        
                     }
                     if (key == 15)
                     {
@@ -287,8 +363,11 @@ int main(void)
                     if (key == 18)
                     {
                         // Hst zurück, ohne Ton
-                        hst--;
-                        grundbild();
+                        if (hst > 1)
+                        {
+                            hst--;
+                            grundbild();
+                        }
                     }
                     
                 break;
