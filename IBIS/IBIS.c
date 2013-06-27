@@ -48,6 +48,33 @@ uint8_t  hst;
 
 uint8_t get_haltestellen_index()
 {
+    if (linie == 1)
+    {
+        if (route ==  1) { return pgm_read_byte (&u1_01 [hst-1]); }
+        if (route ==  2) { return pgm_read_byte (&u1_02 [hst-1]); }
+        if (route ==  3) { return pgm_read_byte (&u1_03 [hst-1]); }
+        if (route ==  4) { return pgm_read_byte (&u1_04 [hst-1]); }
+        if (route ==  7) { return pgm_read_byte (&u1_07 [hst-1]); }
+        if (route ==  8) { return pgm_read_byte (&u1_08 [hst-1]); }
+        if (route == 11) { return pgm_read_byte (&u1_11 [hst-1]); }
+        if (route == 12) { return pgm_read_byte (&u1_12 [hst-1]); }
+    }
+    if (linie == 2)
+    {
+        if (route ==  1) { return pgm_read_byte (&u2_01 [hst-1]); }
+        if (route ==  2) { return pgm_read_byte (&u2_02 [hst-1]); }
+        if (route ==  3) { return pgm_read_byte (&u2_03 [hst-1]); }
+        if (route ==  5) { return pgm_read_byte (&u2_05 [hst-1]); }
+        if (route ==  6) { return pgm_read_byte (&u2_06 [hst-1]); }
+        if (route ==  7) { return pgm_read_byte (&u2_07 [hst-1]); }
+        if (route ==  8) { return pgm_read_byte (&u2_08 [hst-1]); }
+        if (route ==  9) { return pgm_read_byte (&u2_09 [hst-1]); }
+        if (route == 10) { return pgm_read_byte (&u2_10 [hst-1]); }
+        if (route == 11) { return pgm_read_byte (&u2_11 [hst-1]); }
+        if (route == 12) { return pgm_read_byte (&u2_12 [hst-1]); }
+        if (route == 17) { return pgm_read_byte (&u2_17 [hst-1]); }
+        if (route == 18) { return pgm_read_byte (&u2_18 [hst-1]); }
+    }
     if (linie == 3)
     {
         if (route ==  1) { return pgm_read_byte (&u3_01 [hst-1]); }
@@ -275,7 +302,7 @@ int main(void)
                             uint8_t i;
                             
                             i = input / 100;
-                            if (!((i == 6) | (i ==3))) 
+                            if (!((i == 1) | i == 2) | (i == 3) | (i ==6)) 
                             {
                                 display_message(1);
                             } else {
@@ -331,6 +358,57 @@ int main(void)
                             i = input;
                             found = 1;
                                 
+                            if (linie == 1) switch (i)
+                            {
+                                case  1: { ziel = 61; break; }
+                                case  2: { ziel = 50; break; }
+                                case  3: { ziel = 11; break; }
+                                case  4: { ziel = 50; break; }
+                                case  7: { ziel = 82; break; }
+                                case  8: { ziel = 50; break; }
+                                case 11: { ziel = 61; break; }
+                                case 12: { ziel = 40; break; }
+                                default: found = 0;
+                            }
+
+                            if (linie == 2) switch (i)
+                            {
+                                case  1: { ziel = 83; break; }
+                                case  2: { ziel = 62; break; }
+                                case  3: { ziel = 77; break; }
+                                case  5: { ziel = 77; break; }
+                                case  6: { ziel = 62; break; }
+                                case  7: { ziel = 83; break; }
+                                case  8: { ziel = 68; break; }
+                                case  9: { ziel = 83; break; }
+                                case 10: { ziel = 65; break; }
+                                case 11: { ziel = 83; break; }
+                                case 12: { ziel = 55; break; }
+                                case 17: { ziel = 57; break; }
+                                case 18: { ziel = 68; break; }
+                                default: found = 0;
+                            }
+
+                            if (linie == 3) switch (i)
+                            {
+                                case  1: { ziel = 27; break; }
+                                case  2: { ziel = 38; break; }
+                                case  3: { ziel = 16; break; }
+                                case  4: { ziel = 38; break; }
+                                case  5: { ziel = 27; break; }
+                                case  6: { ziel =  8; break; }
+                                case  7: { ziel = 11; break; }
+                                case  8: { ziel = 38; break; }
+                                case  9: { ziel =  7; break; }
+                                case 10: { ziel = 38; break; }
+                                case 11: { ziel = 33; break; }
+                                case 12: { ziel = 38; break; }
+                                case 13: { ziel = 27; break; }
+                                case 17: { ziel = 27; break; }
+                                case 18: { ziel = 42; break; }
+                                default: found = 0;
+                            }
+
                             if (linie == 6) switch (i)
                             {
                                 case  3: { ziel =  1; break; }
@@ -355,25 +433,6 @@ int main(void)
                                 default: found = 0;
                             }                                                                    
                             
-                            if (linie == 3) switch (i)
-                            {
-                                case  1: { ziel = 27; break; }
-                                case  2: { ziel = 38; break; }
-                                case  3: { ziel = 16; break; }
-                                case  4: { ziel = 38; break; }
-                                case  5: { ziel = 27; break; }
-                                case  6: { ziel =  8; break; }
-                                case  7: { ziel = 11; break; }
-                                case  8: { ziel = 38; break; }
-                                case  9: { ziel =  7; break; }
-                                case 10: { ziel = 38; break; }
-                                case 11: { ziel = 33; break; }
-                                case 12: { ziel = 38; break; }
-                                case 13: { ziel = 27; break; }
-                                case 17: { ziel = 27; break; }
-                                case 18: { ziel = 42; break; }
-                                default: found = 0;
-                            }
                             
                             if (found == 0)
                             {
