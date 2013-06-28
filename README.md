@@ -5,14 +5,14 @@ Simulation eines IBIS-Bordcomputers (Siemens/HPW)
 
 ### Hardware
 
-Derzeit wird ein Atmel ATMega8-Mikrocontroller verwendet, dieser genügt zur Ansteuerung der Matrix-Tastatur (3x8-Matrix) und des LCD-Displays (HD44780 im 4-Bit-Modus).
+Derzeit wird ein Atmel ATmega16-Mikrocontroller verwendet, dieser genügt zur Ansteuerung der Matrix-Tastatur (3x8-Matrix) und des LCD-Displays (HD44780 im 4-Bit-Modus) und bietet genug Reserven für Erweiterungen (Magnetkartenleser, Verbindung mit dem PC, Helligkeits- und Kontraststeuerung).
 
-Da der Flash-Speicher von 8 KB nur für sehr wenige Linien und Routen ausreicht und für Erweiterungen mehr freie Portleitungen wünschenswert sind, wird zukünftig ein ATMega16 oder größer (z.B. ATmega644PA) verwendet.
+Der Flash-Speicher von 16 KB genügt für das Münchner U-Bahnnetz (7 Linien und ca. 100 Routen). Für größere Netze wird ein Controller mit mehr Speicher benötigt (z.B. ATmega644PA).
 
 #### Belegung der Ports (in der Software änderbar)
 
 * **PORT B** *(PB0..PB3)*: Daten DB4..DB7, *(PB4)*: RS, *(PB5)*: EN
-* **PORT C** *(PC0..PC2)*: Tastenmatrix Columns
+* **PORT A** *(PA0..PA2)*: Tastenmatrix Columns
 * **PORT D** *(PD0..PD7)*: Tastenmatrix Rows
 
 #### Belegung der Tastatur
@@ -46,4 +46,4 @@ Schaltpläne und so werden dann folgen.
 
 ### Software
 
-Die Software ist in C geschrieben (ARV-GCC, Atmel Studio 6.1). Warnung: Der Code ist einigermaßen bis ziemlich grausam, insbesondere, was die Entprellung der Matrixtastatur und die Blinktexte (ich sag nur delay_ms) angeht. 
+Die Software ist in C geschrieben (ARV-GCC, Atmel Studio 6.1). Warnung: Der Code ist einigermaßen bis ziemlich grausam, insbesondere, was die Entprellung der Matrixtastatur, die Blinktexte (ich sag nur delay_ms) und die Datenablage der Routen angeht.
