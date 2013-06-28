@@ -142,6 +142,72 @@ uint8_t get_haltestellen_index()
         }
     }    
 
+    if (linie == 4)
+    {
+        switch (route)
+        {
+            case  1: if (sizeof(u4_01) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u4_01 [hst-1]); }
+            case  2: if (sizeof(u4_02) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u4_02 [hst-1]); }
+            case  3: if (sizeof(u4_03) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u4_03 [hst-1]); }
+            case  4: if (sizeof(u4_04) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u4_04 [hst-1]); }
+            case  5: if (sizeof(u4_05) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u4_05 [hst-1]); }
+            case  6: if (sizeof(u4_06) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u4_06 [hst-1]); }
+            case  7: if (sizeof(u4_07) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u4_07 [hst-1]); }
+            case  8: if (sizeof(u4_08) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u4_08 [hst-1]); }
+            case 13: if (sizeof(u4_13) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u4_13 [hst-1]); }
+            case 14: if (sizeof(u4_14) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u4_14 [hst-1]); }
+        }
+    }
+
+    if (linie == 5)
+    {
+        switch (route)
+        {
+            case  1: if (sizeof(u5_01) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_01 [hst-1]); }
+            case  2: if (sizeof(u5_02) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_02 [hst-1]); }
+            case  3: if (sizeof(u5_03) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_03 [hst-1]); }
+            case  4: if (sizeof(u5_04) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_04 [hst-1]); }
+            case  5: if (sizeof(u5_05) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_05 [hst-1]); }
+            case  6: if (sizeof(u5_06) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_06 [hst-1]); }
+            case  7: if (sizeof(u5_07) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_07 [hst-1]); }
+            case  8: if (sizeof(u5_08) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_08 [hst-1]); }
+            case  9: if (sizeof(u5_09) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_09 [hst-1]); }
+            case 10: if (sizeof(u5_10) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_10 [hst-1]); }
+            case 11: if (sizeof(u5_11) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_11 [hst-1]); }
+            case 12: if (sizeof(u5_12) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_12 [hst-1]); }
+            case 13: if (sizeof(u5_13) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_13 [hst-1]); }
+            case 14: if (sizeof(u5_14) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_14 [hst-1]); }
+            case 15: if (sizeof(u5_15) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_15 [hst-1]); }
+            case 16: if (sizeof(u5_16) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u5_16 [hst-1]); }
+        }
+    }
+    
     if (linie == 6)
     {
         switch (route)
@@ -186,6 +252,64 @@ uint8_t get_haltestellen_index()
                 else { return pgm_read_byte (&u6_21 [hst-1]); }
         }
     }
+    
+    if (linie == 7)
+    {
+        switch (route)
+        {
+            case  1: if (sizeof(u7_01) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_01 [hst-1]); }
+            case  2: if (sizeof(u7_02) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_02 [hst-1]); }
+            case  3: if (sizeof(u7_03) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_03 [hst-1]); }
+            case  4: if (sizeof(u7_04) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_04 [hst-1]); }
+            case  5: if (sizeof(u7_05) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_05 [hst-1]); }
+            case  6: if (sizeof(u7_06) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_06 [hst-1]); }
+            case  7: if (sizeof(u7_07) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_07 [hst-1]); }
+            case  8: if (sizeof(u7_08) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_08 [hst-1]); }
+            case  9: if (sizeof(u7_09) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_09 [hst-1]); }
+            case 10: if (sizeof(u7_10) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_10 [hst-1]); }
+            case 11: if (sizeof(u7_11) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_11 [hst-1]); }
+            case 12: if (sizeof(u7_12) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u7_12 [hst-1]); }
+        }
+    }
+    
+    if (linie == 8)
+    {
+        switch (route)
+        {
+            case  1: if (sizeof(u8_01) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u8_01 [hst-1]); }
+            case  2: if (sizeof(u8_02) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u8_02 [hst-1]); }
+            case  3: if (sizeof(u8_03) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u8_03 [hst-1]); }
+            case  4: if (sizeof(u8_04) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u8_04 [hst-1]); }
+            case  5: if (sizeof(u8_05) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u8_05 [hst-1]); }
+            case  6: if (sizeof(u8_06) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u8_06 [hst-1]); }
+            case  7: if (sizeof(u8_07) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u8_07 [hst-1]); }
+            case  8: if (sizeof(u8_08) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u8_08 [hst-1]); }
+            case  9: if (sizeof(u8_09) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u8_09 [hst-1]); }
+            case 10: if (sizeof(u8_10) < hst) { hst--; return hstindex; }
+            else { return pgm_read_byte (&u8_10 [hst-1]); }
+        }
+    }        
     
     return 0;
 }
@@ -386,7 +510,11 @@ int main(void)
                                 case 1:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 2:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 3:  { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 4:  { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 5:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 6:  { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 7:  { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 8:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 default: { display_message(1); }
                             }
                             
@@ -489,6 +617,42 @@ int main(void)
                                 default: found = 0;
                             }
 
+                            if (linie == 4) switch (i)
+                            {
+                                case  1: { ziel = 96; break; }
+                                case  2: { ziel = 86; break; }
+                                case  3: { ziel = 96; break; }
+                                case  4: { ziel = 89; break; }
+                                case  5: { ziel = 96; break; }
+                                case  6: { ziel = 91; break; }
+                                case  7: { ziel = 13; break; }
+                                case  8: { ziel = 89; break; }
+                                case 13: { ziel = 96; break; }
+                                case 14: { ziel = 92; break; }
+                                default: found = 0;
+                            }
+                            
+                            if (linie == 5) switch (i)
+                            {
+                                case  1: { ziel =102; break; }
+                                case  2: { ziel = 84; break; }
+                                case  3: { ziel = 77; break; }
+                                case  4: { ziel = 86; break; }
+                                case  5: { ziel = 97; break; }
+                                case  6: { ziel = 89; break; }
+                                case  7: { ziel = 77; break; }
+                                case  8: { ziel = 84; break; }
+                                case  9: { ziel = 13; break; }
+                                case 10: { ziel = 84; break; }
+                                case 11: { ziel = 13; break; }
+                                case 12: { ziel = 86; break; }
+                                case 13: { ziel =100; break; }
+                                case 14: { ziel = 84; break; }
+                                case 15: { ziel =100; break; }
+                                case 16: { ziel = 86; break; }
+                                default: found = 0;
+                            }
+                                                        
                             if (linie == 6) switch (i)
                             {
                                 case  3: { ziel =  1; break; }
@@ -512,7 +676,38 @@ int main(void)
                                 case 21: { ziel = 16; break; }
                                 default: found = 0;
                             }                                                                    
+
+                            if (linie == 7) switch (i)
+                            {
+                                case  1: { ziel =100; break; }
+                                case  2: { ziel = 50; break; }
+                                case  3: { ziel = 11; break; }
+                                case  4: { ziel = 50; break; }
+                                case  5: { ziel =100; break; }
+                                case  6: { ziel = 52; break; }
+                                case  7: { ziel = 11; break; }
+                                case  8: { ziel = 52; break; }
+                                case  9: { ziel =102; break; }
+                                case 10: { ziel = 50; break; }
+                                case 11: { ziel = 61; break; }
+                                case 12: { ziel = 50; break; }
+                                default: found = 0;
+                            }
                             
+                            if (linie == 8) switch (i)
+                            {
+                                case  1: { ziel = 11; break; }
+                                case  2: { ziel = 38; break; }
+                                case  3: { ziel = 57; break; }
+                                case  4: { ziel = 38; break; }
+                                case  5: { ziel = 83; break; }
+                                case  6: { ziel = 38; break; }
+                                case  7: { ziel = 61; break; }
+                                case  8: { ziel = 38; break; }
+                                case  9: { ziel =102; break; }
+                                case 10: { ziel = 38; break; }
+                                default: found = 0;
+                            }
                             
                             if (found == 0)
                             {
