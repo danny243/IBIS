@@ -507,6 +507,7 @@ int main(void)
                             i = input / 100;
                             switch (i)
                             {
+                                case 0:  { linie = 0; kurs = 0; ziel = 0; hst = 0; }
                                 case 1:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 2:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 3:  { linie = i; kurs = input % 100; ziel = 0; break; }
@@ -709,7 +710,7 @@ int main(void)
                                 default: found = 0;
                             }
                             
-                            if (found == 0)
+                            if ((found == 0) | (linie == 0))
                             {
                                 display_message(2);
                             } else {
