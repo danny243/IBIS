@@ -11,9 +11,9 @@ Der Flash-Speicher von 16 KB genügt für das Münchner U-Bahnnetz (7 Linien und
 
 #### Belegung der Ports (in der Software änderbar)
 
-* **PORT B** *(PB0..PB3)*: Daten DB4..DB7, *(PB4)*: RS, *(PB5)*: EN
 * **PORT A** *(PA0..PA2)*: Tastenmatrix Columns
 * **PORT D** *(PD0..PD7)*: Tastenmatrix Rows
+* **PORT B** *(PB0..PB3)*: LCD Daten DB4..DB7, *(PB4)*: RS, *(PB5)*: EN
 
 #### Belegung der Tastatur
 
@@ -47,3 +47,19 @@ Schaltpläne und so werden dann folgen.
 ### Software
 
 Die Software ist in C geschrieben (ARV-GCC, Atmel Studio 6.1). Warnung: Der Code ist einigermaßen bis ziemlich grausam, insbesondere, was die Entprellung der Matrixtastatur, die Blinktexte (ich sag nur delay_ms) und die Datenablage der Routen angeht.
+
+### Lizenz
+
+Copyright 2013 Daniel Schuhmann
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
