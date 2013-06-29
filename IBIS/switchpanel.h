@@ -24,23 +24,23 @@
 /* Tasteninterface
  * 3 Zeilen * 8 Spalten
  *
- * 0x00         = Keine Taste gedrückt
- * 0x01 .. 0x09 = Tastenfeld 1..9
- * 0x0B         = Tastenfeld 0
- * 0x0A         = Löschen
- * 0x0C         = Eingabe/Quittieren
- * 0x0E         = + Hst 
- * 0x11         = - Hst
- * 0x0F         = + Hst (Ansage unterdrückt)
- * 0x12         = - Hst (Ansage unterdrückt)
- *              = Rundspruch Quittieren
- *              = Unfall
- *              = Ohne Ausweis
- *              = Sprechwunsch
- *              = + Zahlgrenze
- *              = - Zahlgrenze
- *              = H/R
- *              = LZA
+ * 0x00            0 = Keine Taste gedrückt
+ * 0x01 .. 0x09 1..9 = Tastenfeld 1..9
+ * 0x0B           11 = Tastenfeld 0
+ * 0x0A           10 = Löschen
+ * 0x0C           12 = Eingabe/Quittieren
+ * 0x0E           14 = + Hst 
+ * 0x11           17 = - Hst
+ * 0x0F           15 = + Hst (Ansage unterdrückt)
+ * 0x12           18 = - Hst (Ansage unterdrückt)
+ * 0x0D           13 = Rundspruch Quittieren
+ * 0x10           16 = Unfall
+ * 0x15           21 = Ohne Ausweis
+ * 0x18           24 = Sprechwunsch
+ * 0x14           20 = + Zahlgrenze
+ * 0x17           23 = - Zahlgrenze
+ * 0x13           19 = H/R
+ * 0x16           22 = LZA
  */ 
 
 
