@@ -17,6 +17,10 @@ Der Flash-Speicher von 16 KB genügt für das Münchner U-Bahnnetz (7 Linien und
 
 #### Belegung der Tastatur
 
+Die Tastatur verfügt über eine 16-polige Anschlussleiste, an die außer der 3x8-Matrix auch ein Helligkeitssensor (zur Einstellung der LCD-Hintergrundbeleuchtung) und zwei Tasten für den LCD-Kontrast angeschlossen sind. 
+
+Die Pins 1..3 gehen an PA0 bis PA2, die Pins 6..13 sind mit PB0..PB7 verschaltet. 
+
 * **02 - 07**: H/R
 * **02 - 06**: LZA
 * **01 - 07**: Zahlgrenze +
