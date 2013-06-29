@@ -459,6 +459,7 @@ int main(void)
                     if (key == 14)
                     {
                         // Hst vor, mit Ton
+                        if ((linie == 0) | (route == 0)) break;
                         hst++;
                         grundbild();
                         
@@ -466,6 +467,7 @@ int main(void)
                     if (key == 17)
                     {
                         // Hst zurück, mit Ton
+                        if ((linie == 0) | (route == 0)) break;
                         if (hst > 1)
                         {
                             hst--;
@@ -475,12 +477,14 @@ int main(void)
                     if (key == 15)
                     {
                         // Hst vor, ohne Ton
+                        if ((linie == 0) | (route == 0)) break;
                         hst++;
                         grundbild();
                     }
                     if (key == 18)
                     {
                         // Hst zurück, ohne Ton
+                        if ((linie == 0) | (route == 0)) break;
                         if (hst > 1)
                         {
                             hst--;
@@ -501,7 +505,9 @@ int main(void)
                             i = input / 100;
                             switch (i)
                             {
-                                case 0:  { linie = 0; kurs = 0; ziel = 0; hst = 0; }
+                                case 0:  { if ((input  % 100) != 0) display_message(1);
+                                           else { linie = 0; kurs = 0; ziel = 0; hst = 0; }
+                                           break; }
                                 case 1:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 2:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 3:  { linie = i; kurs = input % 100; ziel = 0; break; }
