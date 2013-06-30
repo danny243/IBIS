@@ -510,6 +510,14 @@ int main(void)
                             uint8_t i;
                             
                             i = input / 100;
+                            if ((input % 100) == 0) 
+                            {
+                                display_message(1); 
+                                grundbild();
+                                input = 0;
+                                mode = 0;
+                                continue;                            
+                            }
                             switch (i)
                             {
                                 case 0:  { if ((input  % 100) != 0) display_message(1);
