@@ -43,7 +43,9 @@ uint8_t  hstindex;
 
 uint8_t get_haltestellen_index()
 {
-    if (linie == 1)
+    uint8_t linie_norm;
+    if (linie > 90) linie_norm = linie - 90; else linie_norm = linie;
+    if (linie_norm == 1)
     {
         switch (route)
         {
@@ -66,7 +68,7 @@ uint8_t get_haltestellen_index()
         }
     }
 
-    if (linie == 2)
+    if (linie_norm == 2)
     {
         switch (route)
         {
@@ -99,7 +101,7 @@ uint8_t get_haltestellen_index()
         }
     }
     
-    if (linie == 3)
+    if (linie_norm == 3)
     {
         switch (route)
         {
@@ -136,7 +138,7 @@ uint8_t get_haltestellen_index()
         }
     }    
 
-    if (linie == 4)
+    if (linie_norm == 4)
     {
         switch (route)
         {
@@ -163,7 +165,7 @@ uint8_t get_haltestellen_index()
         }
     }
 
-    if (linie == 5)
+    if (linie_norm == 5)
     {
         switch (route)
         {
@@ -202,7 +204,7 @@ uint8_t get_haltestellen_index()
         }
     }
     
-    if (linie == 6)
+    if (linie_norm == 6)
     {
         switch (route)
         {
@@ -247,7 +249,7 @@ uint8_t get_haltestellen_index()
         }
     }
     
-    if (linie == 7)
+    if (linie_norm == 7)
     {
         switch (route)
         {
@@ -278,7 +280,7 @@ uint8_t get_haltestellen_index()
         }
     }
     
-    if (linie == 8)
+    if (linie_norm == 8)
     {
         switch (route)
         {
@@ -359,6 +361,11 @@ void grundbild()
 
     utoa(ziel, buffer, 10);
     lcd_string(buffer);
+    
+    // Abweichung
+    lcd_setcursor(14, 2);
+    
+    lcd_string("+0");
     
     // Route setzen
     lcd_setcursor(0, 2);
@@ -516,6 +523,15 @@ int main(void)
                                 case 6:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 7:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 8:  { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 91: { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 92: { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 93: { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 94: { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 95: { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 96: { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 97: { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 98: { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 99: { linie = 0; kurs = input % 100; ziel = 0; break; }
                                 default: { display_message(1); }
                             }
                             
