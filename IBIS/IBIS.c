@@ -510,7 +510,7 @@ int main(void)
                             uint8_t i;
                             
                             i = input / 100;
-                            if ((input % 100) == 0) 
+                            if (((input % 100) == 0) & ((input/100) != 0))
                             {
                                 display_message(1); 
                                 grundbild();
@@ -520,9 +520,7 @@ int main(void)
                             }
                             switch (i)
                             {
-                                case 0:  { if ((input  % 100) != 0) display_message(1);
-                                           else { linie = 0; kurs = 0; ziel = 0; hst = 0; }
-                                           break; }
+                                case 0:  { linie = 0; kurs = 0; ziel = 0; hst = 0;  break; }
                                 case 1:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 2:  { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 3:  { linie = i; kurs = input % 100; ziel = 0; break; }
