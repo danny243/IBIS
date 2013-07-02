@@ -521,21 +521,21 @@ int main(void)
                             switch (i)
                             {
                                 case 0:  { linie = 0; kurs = 0; ziel = 0; hst = 0;  break; }
-                                case 1:  { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 2:  { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 3:  { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 4:  { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 5:  { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 6:  { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 7:  { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 8:  { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 91: { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 92: { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 93: { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 94: { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 95: { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 96: { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 97: { linie = i; kurs = input % 100; ziel = 0; break; }
+                                case 1:  
+                                case 2:  
+                                case 3:  
+                                case 4:  
+                                case 5:  
+                                case 6:  
+                                case 7:  
+                                case 8:  
+                                case 91: 
+                                case 92: 
+                                case 93: 
+                                case 94: 
+                                case 95: 
+                                case 96: 
+                                case 97: 
                                 case 98: { linie = i; kurs = input % 100; ziel = 0; break; }
                                 case 99: { linie = 0; kurs = input % 100; ziel = 0; break; }
                                 default: { display_message(1); }
