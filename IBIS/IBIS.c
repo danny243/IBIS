@@ -355,9 +355,15 @@ void grundbild()
     lcd_setcursor(4, 2);
     
     if (ziel < 10)
+<<<<<<< HEAD
         lcd_string("00");
     else if (ziel < 100)
         lcd_string("0");
+=======
+      lcd_string("00");
+    else if (ziel < 100)
+      lcd_string("0");
+>>>>>>> c8fd584c352a92db26b5824cf620a2b8bea888df
 
     utoa(ziel, buffer, 10);
     lcd_string(buffer);
