@@ -319,11 +319,11 @@ void display_message(uint8_t msg)
         lcd_setcursor(0,1);
         switch (msg)
         {
-            case 1: { lcd_string("FALSCHE LINIE   "); break; }
-            case 2: { lcd_string("FALSCHE ROUTE   "); break; }
-            case 3: { lcd_string("FALSCHES ZIEL   "); break; }
-            case 7: { lcd_string("MELDUNG SENDEN  "); break; }
-            default:  lcd_string("UNBEK. FEHLER   ");
+            case 1:  lcd_string("FALSCHE LINIE   "); break; 
+            case 2:  lcd_string("FALSCHE ROUTE   "); break; 
+            case 3:  lcd_string("FALSCHES ZIEL   "); break; 
+            case 7:  lcd_string("MELDUNG SENDEN  "); break; 
+            default: lcd_string("UNBEK. FEHLER   ");
         }
         _delay_ms(500);
         lcd_setcursor(0,1);
@@ -355,9 +355,9 @@ void grundbild()
     lcd_setcursor(4, 2);
     
     if (ziel < 10)
-    {lcd_string("00");}
+        lcd_string("00");
     else if (ziel < 100)
-    {lcd_string("0");}
+        lcd_string("0");
 
     utoa(ziel, buffer, 10);
     lcd_string(buffer);
@@ -370,11 +370,11 @@ void grundbild()
     // Route setzen
     lcd_setcursor(0, 2);
     
-    if ((route % 2) == 0) {lcd_string("R");} else {lcd_string("H");}
+    if ((route % 2) == 0) lcd_string("R"); else lcd_string("H");
     if (hst < 10)
-    {lcd_string("00");}
+        lcd_string("00");
     else if (hst < 100)
-    {lcd_string("0");}
+        lcd_string("0");
     utoa(hst, buffer, 10);
     lcd_string(buffer);
     
@@ -383,13 +383,13 @@ void grundbild()
     liniekurs = (linie * 100) + kurs;
     
     if (liniekurs < 10)
-    {lcd_string("0000");}
+        lcd_string("0000");
     else if (liniekurs < 100)
-    {lcd_string("000");}
+        lcd_string("000");
     else if (liniekurs < 1000)
-    {lcd_string("00");}
+        lcd_string("00");
     else if (liniekurs < 10000)
-    {lcd_string("0");}
+        lcd_string("0");
 
     utoa(liniekurs, buffer, 10);
     lcd_string(buffer);
@@ -433,7 +433,7 @@ int main(void)
             key4 = key3; key3 = key2; key2 = key1; key1 = read_key();
             if ((key4 == key3) & (key1 == key2) & (key3 == key1)) {key = key1;}
             if (key == 0) {action = 1; continue;}
-            if (action == 0) {continue;}
+            if (action == 0) continue;
             action = 0;
             
             lcd_setcursor(0, 1);
@@ -520,15 +520,15 @@ int main(void)
                             }
                             switch (i)
                             {
-                                case 0:  { linie = 0; kurs = 0; ziel = 0; hst = 0;  break; }
-                                case 1:  
-                                case 2:  
-                                case 3:  
-                                case 4:  
-                                case 5:  
-                                case 6:  
-                                case 7:  
-                                case 8:  
+                                case  0: linie = 0; kurs = 0; ziel = 0; hst = 0;  break; 
+                                case  1:  
+                                case  2:  
+                                case  3:  
+                                case  4:  
+                                case  5:  
+                                case  6:  
+                                case  7:  
+                                case  8:  
                                 case 91: 
                                 case 92: 
                                 case 93: 
@@ -536,8 +536,8 @@ int main(void)
                                 case 95: 
                                 case 96: 
                                 case 97: 
-                                case 98: { linie = i; kurs = input % 100; ziel = 0; break; }
-                                case 99: { linie = 0; kurs = input % 100; ziel = 0; break; }
+                                case 98: linie = i; kurs = input % 100; ziel = 0; break;
+                                case 99: linie = 0; kurs = input % 100; ziel = 0; break;
                                 default: { display_message(1); }
                             }
                             
@@ -563,13 +563,13 @@ int main(void)
                         input = (input * 10) + key;
                         lcd_setcursor(11,1);
                         if (input < 10) 
-                            {lcd_string("    ");}
+                            lcd_string("    ");
                         else if (input < 100) 
-                            {lcd_string("   ");}
+                            lcd_string("   ");
                         else if (input < 1000)
-                             {lcd_string("  ");}
+                            lcd_string("  ");
                         else if (input < 10000)
-                        {lcd_string(" ");}
+                            lcd_string(" ");
 
                         char buffer[6];
                         utoa(input, buffer, 10);
@@ -591,144 +591,144 @@ int main(void)
                                 
                             if (linie == 1) switch (i)
                             {
-                                case  1: { ziel = 61; break; }
-                                case  2: { ziel = 50; break; }
-                                case  3: { ziel = 11; break; }
-                                case  4: { ziel = 50; break; }
-                                case  7: { ziel = 82; break; }
-                                case  8: { ziel = 50; break; }
-                                case 11: { ziel = 61; break; }
-                                case 12: { ziel = 40; break; }
+                                case  1: ziel = 61; break; 
+                                case  2: ziel = 50; break; 
+                                case  3: ziel = 11; break; 
+                                case  4: ziel = 50; break; 
+                                case  7: ziel = 82; break; 
+                                case  8: ziel = 50; break; 
+                                case 11: ziel = 61; break; 
+                                case 12: ziel = 40; break; 
                                 default: found = 0;
                             }
 
                             if (linie == 2) switch (i)
                             {
-                                case  1: { ziel = 83; break; }
-                                case  2: { ziel = 62; break; }
-                                case  3: { ziel = 77; break; }
-                                case  5: { ziel = 77; break; }
-                                case  6: { ziel = 62; break; }
-                                case  7: { ziel = 83; break; }
-                                case  8: { ziel = 68; break; }
-                                case  9: { ziel = 83; break; }
-                                case 10: { ziel = 65; break; }
-                                case 11: { ziel = 83; break; }
-                                case 12: { ziel = 55; break; }
-                                case 17: { ziel = 57; break; }
-                                case 18: { ziel = 68; break; }
+                                case  1: ziel = 83; break; 
+                                case  2: ziel = 62; break; 
+                                case  3: ziel = 77; break; 
+                                case  5: ziel = 77; break; 
+                                case  6: ziel = 62; break; 
+                                case  7: ziel = 83; break; 
+                                case  8: ziel = 68; break; 
+                                case  9: ziel = 83; break; 
+                                case 10: ziel = 65; break; 
+                                case 11: ziel = 83; break; 
+                                case 12: ziel = 55; break; 
+                                case 17: ziel = 57; break; 
+                                case 18: ziel = 68; break; 
                                 default: found = 0;
                             }
 
                             if (linie == 3) switch (i)
                             {
-                                case  1: { ziel = 27; break; }
-                                case  2: { ziel = 38; break; }
-                                case  3: { ziel = 16; break; }
-                                case  4: { ziel = 38; break; }
-                                case  5: { ziel = 27; break; }
-                                case  6: { ziel =  8; break; }
-                                case  7: { ziel = 11; break; }
-                                case  8: { ziel = 38; break; }
-                                case  9: { ziel =  7; break; }
-                                case 10: { ziel = 38; break; }
-                                case 11: { ziel = 33; break; }
-                                case 12: { ziel = 38; break; }
-                                case 13: { ziel = 27; break; }
-                                case 17: { ziel = 27; break; }
-                                case 18: { ziel = 42; break; }
+                                case  1: ziel = 27; break; 
+                                case  2: ziel = 38; break; 
+                                case  3: ziel = 16; break; 
+                                case  4: ziel = 38; break; 
+                                case  5: ziel = 27; break; 
+                                case  6: ziel =  8; break; 
+                                case  7: ziel = 11; break; 
+                                case  8: ziel = 38; break; 
+                                case  9: ziel =  7; break; 
+                                case 10: ziel = 38; break; 
+                                case 11: ziel = 33; break; 
+                                case 12: ziel = 38; break; 
+                                case 13: ziel = 27; break; 
+                                case 17: ziel = 27; break; 
+                                case 18: ziel = 42; break; 
                                 default: found = 0;
                             }
 
                             if (linie == 4) switch (i)
                             {
-                                case  1: { ziel = 96; break; }
-                                case  2: { ziel = 86; break; }
-                                case  3: { ziel = 96; break; }
-                                case  4: { ziel = 89; break; }
-                                case  5: { ziel = 96; break; }
-                                case  6: { ziel = 91; break; }
-                                case  7: { ziel = 13; break; }
-                                case  8: { ziel = 89; break; }
-                                case 13: { ziel = 96; break; }
-                                case 14: { ziel = 92; break; }
+                                case  1: ziel = 96; break; 
+                                case  2: ziel = 86; break; 
+                                case  3: ziel = 96; break; 
+                                case  4: ziel = 89; break; 
+                                case  5: ziel = 96; break; 
+                                case  6: ziel = 91; break; 
+                                case  7: ziel = 13; break; 
+                                case  8: ziel = 89; break; 
+                                case 13: ziel = 96; break; 
+                                case 14: ziel = 92; break; 
                                 default: found = 0;
                             }
                             
                             if (linie == 5) switch (i)
                             {
-                                case  1: { ziel =102; break; }
-                                case  2: { ziel = 84; break; }
-                                case  3: { ziel = 77; break; }
-                                case  4: { ziel = 86; break; }
-                                case  5: { ziel = 97; break; }
-                                case  6: { ziel = 89; break; }
-                                case  7: { ziel = 77; break; }
-                                case  8: { ziel = 84; break; }
-                                case  9: { ziel = 13; break; }
-                                case 10: { ziel = 84; break; }
-                                case 11: { ziel = 13; break; }
-                                case 12: { ziel = 86; break; }
-                                case 13: { ziel =100; break; }
-                                case 14: { ziel = 84; break; }
-                                case 15: { ziel =100; break; }
-                                case 16: { ziel = 86; break; }
+                                case  1: ziel =102; break; 
+                                case  2: ziel = 84; break; 
+                                case  3: ziel = 77; break; 
+                                case  4: ziel = 86; break; 
+                                case  5: ziel = 97; break; 
+                                case  6: ziel = 89; break; 
+                                case  7: ziel = 77; break; 
+                                case  8: ziel = 84; break; 
+                                case  9: ziel = 13; break; 
+                                case 10: ziel = 84; break; 
+                                case 11: ziel = 13; break; 
+                                case 12: ziel = 86; break; 
+                                case 13: ziel =100; break; 
+                                case 14: ziel = 84; break; 
+                                case 15: ziel =100; break; 
+                                case 16: ziel = 86; break; 
                                 default: found = 0;
                             }
                                                         
                             if (linie == 6) switch (i)
                             {
-                                case  3: { ziel =  1; break; }
-                                case  4: { ziel = 23; break; }
-                                case  5: { ziel = 11; break; }
-                                case  6: { ziel = 16; break; }
-                                case  7: { ziel =  7; break; }
-                                case  8: { ziel = 16; break; }
-                                case  9: { ziel =  7; break; }
-                                case 10: { ziel = 23; break; }
-                                case 11: { ziel =  1; break; }
-                                case 12: { ziel = 26; break; }
-                                case 13: { ziel = 11; break; }
-                                case 14: { ziel = 23; break; }
-                                case 15: { ziel = 7;  break; }
-                                case 16: { ziel = 22; break; }
-                                case 17: { ziel = 1;  break; }
-                                case 18: { ziel = 22; break; }
-                                case 19: { ziel = 1;  break; }
-                                case 20: { ziel = 16; break; }
-                                case 21: { ziel = 16; break; }
+                                case  3: ziel =  1; break; 
+                                case  4: ziel = 23; break; 
+                                case  5: ziel = 11; break; 
+                                case  6: ziel = 16; break; 
+                                case  7: ziel =  7; break; 
+                                case  8: ziel = 16; break; 
+                                case  9: ziel =  7; break; 
+                                case 10: ziel = 23; break; 
+                                case 11: ziel =  1; break; 
+                                case 12: ziel = 26; break; 
+                                case 13: ziel = 11; break; 
+                                case 14: ziel = 23; break; 
+                                case 15: ziel = 7;  break; 
+                                case 16: ziel = 22; break; 
+                                case 17: ziel = 1;  break; 
+                                case 18: ziel = 22; break; 
+                                case 19: ziel = 1;  break; 
+                                case 20: ziel = 16; break; 
+                                case 21: ziel = 16; break; 
                                 default: found = 0;
                             }                                                                    
 
                             if (linie == 7) switch (i)
                             {
-                                case  1: { ziel =100; break; }
-                                case  2: { ziel = 50; break; }
-                                case  3: { ziel = 11; break; }
-                                case  4: { ziel = 50; break; }
-                                case  5: { ziel =100; break; }
-                                case  6: { ziel = 52; break; }
-                                case  7: { ziel = 11; break; }
-                                case  8: { ziel = 52; break; }
-                                case  9: { ziel =102; break; }
-                                case 10: { ziel = 50; break; }
-                                case 11: { ziel = 61; break; }
-                                case 12: { ziel = 50; break; }
+                                case  1: ziel =100; break; 
+                                case  2: ziel = 50; break; 
+                                case  3: ziel = 11; break; 
+                                case  4: ziel = 50; break; 
+                                case  5: ziel =100; break; 
+                                case  6: ziel = 52; break; 
+                                case  7: ziel = 11; break; 
+                                case  8: ziel = 52; break; 
+                                case  9: ziel =102; break; 
+                                case 10: ziel = 50; break; 
+                                case 11: ziel = 61; break; 
+                                case 12: ziel = 50; break; 
                                 default: found = 0;
                             }
                             
                             if (linie == 8) switch (i)
                             {
-                                case  1: { ziel = 11; break; }
-                                case  2: { ziel = 38; break; }
-                                case  3: { ziel = 57; break; }
-                                case  4: { ziel = 38; break; }
-                                case  5: { ziel = 83; break; }
-                                case  6: { ziel = 38; break; }
-                                case  7: { ziel = 61; break; }
-                                case  8: { ziel = 38; break; }
-                                case  9: { ziel =102; break; }
-                                case 10: { ziel = 38; break; }
+                                case  1: ziel = 11; break; 
+                                case  2: ziel = 38; break; 
+                                case  3: ziel = 57; break; 
+                                case  4: ziel = 38; break; 
+                                case  5: ziel = 83; break; 
+                                case  6: ziel = 38; break; 
+                                case  7: ziel = 61; break; 
+                                case  8: ziel = 38; break; 
+                                case  9: ziel =102; break; 
+                                case 10: ziel = 38; break; 
                                 default: found = 0;
                             }
                             
@@ -754,14 +754,14 @@ int main(void)
                             continue;
                         }
                         // Unerwünschte Tasten abweisen
-                        if (key > 12) {continue;}
+                        if (key > 12) continue;
                     
                         // Eingabe der Route
-                        if (key == 11) {key = 0;}
-                        if (input > 99) {continue;}
+                        if (key == 11) key = 0;
+                        if (input > 99) continue;
                         input = (input * 10) + key;
                         lcd_setcursor(14,1);
-                        if (input < 10) {lcd_string(" ");}
+                        if (input < 10) lcd_string(" ");
 
                         char buffer[3];
                         utoa(input, buffer, 10);
@@ -783,51 +783,51 @@ int main(void)
                             
                             switch (i)
                             {
-                                case  0: { ziel =  0; break; }
-                                case  1: { ziel = 19; break; }
-                                case  2: { ziel = 96; break; }
-                                case  3: { ziel = 34; break; }
-                                case  4: { ziel = 62; break; }
-                                case  5: { ziel = 23; break; }
-                                case  6: { ziel = 27; break; }
-                                case  7: { ziel = 33; break; }
-                                case  8: { ziel =  7; break; }
-                                case  9: { ziel = 55; break; }
-                                case 10: { ziel = 24; break; }
-                                case 11: { ziel =  8; break; }
-                                case 12: { ziel = 77; break; }
-                                case 13: { ziel = 68; break; }
-                                case 14: { ziel = 22; break; }
-                                case 15: { ziel =  1; break; }
-                                case 16: { ziel = 57; break; }
-                                case 17: { ziel = 84; break; }
-                                case 18: { ziel = 91; break; }
-                                case 19: { ziel = 61; break; }
-                                case 20: { ziel = 92; break; }
-                                case 21: { ziel = 83; break; }
-                                case 22: { ziel = 42; break; }
-                                case 23: { ziel = 16; break; }
-                                case 24: { ziel = 49; break; }
-                                case 25: { ziel =102; break; }
-                                case 26: { ziel =100; break; }
-                                case 27: { ziel = 13; break; }
-                                case 28: { ziel = 38; break; }
-                                case 29: { ziel = 52; break; }
-                                case 30: { ziel = 97; break; }
-                                case 31: { ziel = 11; break; }
-                                case 32: { ziel = 89; break; }
-                                case 33: { ziel = 86; break; }
-                                case 34: { ziel = 50; break; }
-                                case 35: { ziel = 65; break; }
-                                case 38: { ziel = 26; break; }
-                                case 39: { ziel = 40; break; }
+                                case  0: ziel =  0; break; 
+                                case  1: ziel = 19; break; 
+                                case  2: ziel = 96; break; 
+                                case  3: ziel = 34; break; 
+                                case  4: ziel = 62; break; 
+                                case  5: ziel = 23; break; 
+                                case  6: ziel = 27; break; 
+                                case  7: ziel = 33; break; 
+                                case  8: ziel =  7; break; 
+                                case  9: ziel = 55; break; 
+                                case 10: ziel = 24; break; 
+                                case 11: ziel =  8; break; 
+                                case 12: ziel = 77; break; 
+                                case 13: ziel = 68; break; 
+                                case 14: ziel = 22; break; 
+                                case 15: ziel =  1; break; 
+                                case 16: ziel = 57; break; 
+                                case 17: ziel = 84; break; 
+                                case 18: ziel = 91; break; 
+                                case 19: ziel = 61; break; 
+                                case 20: ziel = 92; break; 
+                                case 21: ziel = 83; break; 
+                                case 22: ziel = 42; break; 
+                                case 23: ziel = 16; break; 
+                                case 24: ziel = 49; break; 
+                                case 25: ziel =102; break; 
+                                case 26: ziel =100; break; 
+                                case 27: ziel = 13; break; 
+                                case 28: ziel = 38; break; 
+                                case 29: ziel = 52; break; 
+                                case 30: ziel = 97; break; 
+                                case 31: ziel = 11; break; 
+                                case 32: ziel = 89; break; 
+                                case 33: ziel = 86; break; 
+                                case 34: ziel = 50; break; 
+                                case 35: ziel = 65; break; 
+                                case 38: ziel = 26; break; 
+                                case 39: ziel = 40; break; 
 
-                                case 36: { ziel = 43; break; }
-                                case 37: { ziel = 44; break; }
-                                case 140:{ ziel = 45; break; }
-                                case 101:{ ziel = 46; break; }
-                                case 125:{ ziel = 47; break; }
-                                case 115:{ ziel = 48; break; }
+                                case 36: ziel = 43; break; 
+                                case 37: ziel = 44; break; 
+                                case 140:ziel = 45; break; 
+                                case 101:ziel = 46; break; 
+                                case 125:ziel = 47; break; 
+                                case 115:ziel = 48; break; 
                                 default: found = 0;
                             }                            
                             
@@ -849,15 +849,17 @@ int main(void)
                             continue;
                         }
                         // Unerwünschte Tasten abweisen
-                        if (key > 12) {continue;}
+                        if (key > 12) continue;
                     
                         // Eingabe des Ziels
-                        if (key == 11) {key = 0;}
-                        if (input > 999) {continue;}
+                        if (key == 11) key = 0;
+                        if (input > 999) continue;
                         input = (input * 10) + key;
                         lcd_setcursor(13,1);
-                        if (input < 10)       {lcd_string("  ");}
-                        else if (input < 100) {lcd_string(" ");}
+                        if (input < 10)       
+                            lcd_string("  ");
+                        else if (input < 100) 
+                            lcd_string(" ");
 
                         char buffer[4];
                         utoa(input, buffer, 10);
@@ -888,12 +890,12 @@ int main(void)
                             continue;
                         }
                         // Unerwünschte Tasten abweisen
-                        if (key > 12) {continue;}
+                        if (key > 12) continue;
                     
                         // Eingabe der Meldung
-                        if (key == 11) {key = 0;}
+                        if (key == 11) key = 0;
                         input = (input * 10) + key;
-                        if (input > 9) {continue;}
+                        if (input > 9) continue;
                         lcd_setcursor(15,1);
 
                         char buffer[3];
