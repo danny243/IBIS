@@ -463,6 +463,16 @@ int main(void)
                         lcd_string("MELDUNG      :  ");
                         mode = 7;
                     }
+                    if (key == 8)
+                    {
+                        // Mode 8: Uhrzeit/Datum
+                        lcd_string("03.07.13   22:43");
+                        
+                    }
+                    if (key == 10)
+                    {
+                        grundbild();
+                    }
                     if (key == 14)
                     {
                         // Hst vor, mit Ton
@@ -538,7 +548,7 @@ int main(void)
                                 case 97: 
                                 case 98: linie = i; kurs = input % 100; ziel = 0; break;
                                 case 99: linie = 0; kurs = input % 100; ziel = 0; break;
-                                default: { display_message(1); }
+                                default: display_message(1); 
                             }
                             
                             grundbild();
