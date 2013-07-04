@@ -21,17 +21,47 @@
 /*                                                                      */
 /************************************************************************/
 
+#ifndef __C51__
+#define code
+#define idata
+#endif
 
 #define F_CPU 4000000UL
+
+#define FIRSTYEAR  2000      // start year
+#define FIRSTDAY  6          // 0 = Sunday
 
 #include <stdlib.h>
 #include <avr/io.h>
 #include <avr/pgmspace.h>
+#include <avr/interrupt.h>
 #include <util/delay.h>
 #include "lcd-routines.h"
 #include "switchpanel.h"
 #include "routes.h"
 
+typedef unsigned char  u8;
+typedef   signed char  s8;
+typedef unsigned short u16;
+typedef   signed short s16;
+typedef unsigned long  u32;
+typedef   signed long  s32;
+
+struct time {
+    u8  second;
+    u8  minute;
+    u8  hour;
+    u8  day;
+    u8  month;
+    u16 year;
+    u8  wday;
+};
+
+
+volatile u32 mytime;
+volatile u8 overflow;
+
+u8 code DayOfMonth[] = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 uint8_t  linie;
 uint8_t  kurs;
@@ -40,6 +70,97 @@ uint16_t ziel;
 uint8_t  hst;
 uint8_t  hstindex;
 
+
+ISR( TIMER2_OVF_vect ) {
+    overflow++;
+    if (overflow == 61)
+    {   
+        mytime++;
+        overflow = 0;
+    }    
+}
+
+void summertime( struct time idata *t )
+{
+    u8 hour, day, wday, month;      // locals for faster access
+
+    hour = t->hour;
+    day = t->day;
+    wday = t->wday;
+    month = t->month;
+
+    if( month < 3 || month > 10 )      // month 1, 2, 11, 12
+    return;          // -> Winter
+
+    if( day - wday >= 25 && (wday || hour >= 2) ){ // after last Sunday 2:00
+        if( month == 10 )        // October -> Winter
+        return;
+        }else{          // before last Sunday 2:00
+        if( month == 3 )        // March -> Winter
+        return;
+    }
+    hour++;          // add one hour
+    if( hour == 24 ){        // next day
+        hour = 0;
+        wday++;          // next weekday
+        if( wday == 7 )
+        wday = 0;
+        if( day == DayOfMonth[month-1] ){    // next month
+            day = 0;
+            month++;
+        }
+        day++;
+    }
+    t->month = month;
+    t->hour = hour;
+    t->day = day;
+    t->wday = wday;
+}
+
+void gettime( u32 sec, struct time idata *t )
+{
+    u16 day;
+    u8 year;
+    u16 dayofyear;
+    u8 leap400;
+    u8 month;
+
+    t->second = sec % 60;
+    sec /= 60;
+    t->minute = sec % 60;
+    sec /= 60;
+    t->hour = sec % 24;
+    day = sec / 24;
+
+    t->wday = (day + FIRSTDAY) % 7;    // weekday
+
+    year = FIRSTYEAR % 100;      // 0..99
+    leap400 = 4 - ((FIRSTYEAR - 1) / 100 & 3);  // 4, 3, 2, 1
+
+    for(;;){
+        dayofyear = 365;
+        if( (year & 3) == 0 ){
+            dayofyear = 366;          // leap year
+            if( year == 0 || year == 100 || year == 200 )  // 100 year exception
+            if( --leap400 )          // 400 year exception
+            dayofyear = 365;
+        }
+        if( day < dayofyear )
+        break;
+        day -= dayofyear;
+        year++;          // 00..136 / 99..235
+    }
+    t->year = year + FIRSTYEAR / 100 * 100;  // + century
+
+    if( dayofyear & 1 && day > 58 )    // no leap year and after 28.2.
+    day++;          // skip 29.2.
+
+    for( month = 1; day >= DayOfMonth[month-1]; month++ )
+    day -= DayOfMonth[month-1];
+
+    t->month = month;        // 1..12
+    t->day = day + 1;        // 1..31
+}
 
 uint8_t get_haltestellen_index()
 {
@@ -398,6 +519,10 @@ void grundbild()
 
 int main(void)
 {
+    TCCR2  = (1<<CS22) | (1<<CS21); // Vorteiler 256 -> ~65ms Überlaufperiode
+    TIMSK |= (1<<TOIE2);            // Timer Overflow Interrupt freischalten
+    sei();
+    
     unsigned char key, key1, key2, key3, key4;
     unsigned int input;
     unsigned char mode;
@@ -414,6 +539,7 @@ int main(void)
     route = 0;
     ziel = 0;
     hstindex = 0;
+    mytime = 410047740; 
     
     // LCD auf Grundfunktion setzen
     lcd_init();
@@ -466,7 +592,36 @@ int main(void)
                     if (key == 8)
                     {
                         // Mode 8: Uhrzeit/Datum
-                        lcd_string("03.07.13   22:43");
+                        
+                        struct time idata current_time;
+                        gettime(mytime, &current_time);
+                        
+                        char buffer[5];
+                        // LCD-Ausgabe
+                        // Tag
+                        utoa(current_time.day, buffer, 10);
+                        if (current_time.day < 10) lcd_string("0");
+                        lcd_string(buffer);
+                        lcd_string(".");
+                        // Monat
+                        utoa(current_time.month, buffer, 10);
+                        if (current_time.month < 10) lcd_string("0");
+                        lcd_string(buffer);
+                        lcd_string(".");
+                        // Jahr
+                        utoa(current_time.year % 100, buffer, 10);
+                        if ((current_time.year % 100) < 10) lcd_string("0");
+                        lcd_string(buffer);
+                        lcd_string("   ");
+                        // Stunde
+                        utoa(current_time.hour, buffer, 10);
+                        if (current_time.hour < 10) lcd_string("0");
+                        lcd_string(buffer);
+                        lcd_string(":");
+                        // Minute
+                        utoa(current_time.minute, buffer, 10);
+                        if (current_time.minute < 10) lcd_string("0");
+                        lcd_string(buffer);
                         
                     }
                     if (key == 10)
