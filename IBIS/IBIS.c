@@ -162,6 +162,7 @@ void gettime( u32 sec, struct time idata *t )
     t->day = day + 1;        // 1..31
 }
 
+
 uint8_t get_haltestellen_index()
 {
     uint8_t linie_norm;
@@ -454,6 +455,40 @@ void display_message(uint8_t msg)
 
 }
 
+void display_time()
+{
+    lcd_setcursor(0, 1);
+    struct time idata current_time;
+    gettime(mytime, &current_time);
+                        
+    char buffer[5];
+    // LCD-Ausgabe
+    // Tag
+    utoa(current_time.day, buffer, 10);
+    if (current_time.day < 10) lcd_string("0");
+    lcd_string(buffer);
+    lcd_string(".");
+    // Monat
+    utoa(current_time.month, buffer, 10);
+    if (current_time.month < 10) lcd_string("0");
+    lcd_string(buffer);
+    lcd_string(".");
+    // Jahr
+    utoa(current_time.year % 100, buffer, 10);
+    if ((current_time.year % 100) < 10) lcd_string("0");
+    lcd_string(buffer);
+    lcd_string("   ");
+    // Stunde
+    utoa(current_time.hour, buffer, 10);
+    if (current_time.hour < 10) lcd_string("0");
+    lcd_string(buffer);
+    lcd_string(":");
+    // Minute
+    utoa(current_time.minute, buffer, 10);
+    if (current_time.minute < 10) lcd_string("0");
+    lcd_string(buffer);
+}
+
 
 void grundbild()
 {
@@ -591,38 +626,16 @@ int main(void)
                     }
                     if (key == 8)
                     {
-                        // Mode 8: Uhrzeit/Datum
-                        
-                        struct time idata current_time;
-                        gettime(mytime, &current_time);
-                        
-                        char buffer[5];
-                        // LCD-Ausgabe
-                        // Tag
-                        utoa(current_time.day, buffer, 10);
-                        if (current_time.day < 10) lcd_string("0");
-                        lcd_string(buffer);
-                        lcd_string(".");
-                        // Monat
-                        utoa(current_time.month, buffer, 10);
-                        if (current_time.month < 10) lcd_string("0");
-                        lcd_string(buffer);
-                        lcd_string(".");
-                        // Jahr
-                        utoa(current_time.year % 100, buffer, 10);
-                        if ((current_time.year % 100) < 10) lcd_string("0");
-                        lcd_string(buffer);
-                        lcd_string("   ");
-                        // Stunde
-                        utoa(current_time.hour, buffer, 10);
-                        if (current_time.hour < 10) lcd_string("0");
-                        lcd_string(buffer);
-                        lcd_string(":");
-                        // Minute
-                        utoa(current_time.minute, buffer, 10);
-                        if (current_time.minute < 10) lcd_string("0");
-                        lcd_string(buffer);
-                        
+                        // Mode 8/ohne Mode: Uhrzeit/Datum anzeigen
+                        display_time();
+                    }
+                    if (key == 19)
+                    {
+                        // Mode 19:
+                        mode = 19;
+                        lcd_setcursor(0, 2);
+                        lcd_string("UHRZEIT STELLEN ");
+                        display_time();
                     }
                     if (key == 10)
                     {
@@ -1069,6 +1082,43 @@ int main(void)
                     
                     }
                 break;
+
+                case 19:
+                {
+                    // UHRZEIT STELLEN:
+                    // Übernahme (Enter) oder Abbruch (Löschen) der Daten
+                    if (key == 12)
+                    {
+                        grundbild();
+                        mode = 0;
+                        input = 0;
+                        continue;
+                    }
+                    
+                    if (key == 10)
+                    {
+                        grundbild();
+                        input = 0;
+                        mode = 0;
+                        continue;
+                    }
+                    switch (key)
+                    {
+                        case 15: mytime += 60;
+                        case 18: mytime -= 60;
+                        case 14: mytime += 3600;
+                        case 17: mytime -= 3600;
+                        case 13: mytime += 86400;
+                        case 16: mytime -= 86400;
+                        case 21: mytime += 2592000;
+                        case 24: mytime -= 2592000;
+                        case 20: mytime += 31536000;
+                        case 23: mytime -= 31536000; display_time();
+                    }
+                    
+                }
+                break;
+
 
 
             }
