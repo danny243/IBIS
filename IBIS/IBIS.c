@@ -1104,17 +1104,18 @@ int main(void)
                     }
                     switch (key)
                     {
-                        case 15: mytime += 60;
-                        case 18: mytime -= 60;
-                        case 14: mytime += 3600;
-                        case 17: mytime -= 3600;
-                        case 13: mytime += 86400;
-                        case 16: mytime -= 86400;
-                        case 21: mytime += 2592000;
-                        case 24: mytime -= 2592000;
-                        case 20: mytime += 31536000;
-                        case 23: mytime -= 31536000; display_time();
+                        case 15: mytime += 60; break;
+                        case 18: mytime -= 60; break;
+                        case 14: mytime += 3600; break;
+                        case 17: mytime -= 3600; break;
+                        case 13: mytime += 86400; break;
+                        case 16: mytime -= 86400; break;
+                        case 21: mytime += 2592000; break;
+                        case 24: mytime -= 2592000; break;
+                        case 20: mytime += 31536000; break;
+                        case 23: mytime -= 31536000;  break;
                     }
+                    display_time();
                     
                 }
                 break;
