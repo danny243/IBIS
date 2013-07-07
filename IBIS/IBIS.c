@@ -73,7 +73,7 @@ uint8_t  hstindex;
 
 ISR( TIMER2_OVF_vect ) {
     overflow++;
-    if (overflow == 60)
+    if (overflow == 62)
     {   
         mytime++;
         overflow = 0;
