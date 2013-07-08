@@ -7,7 +7,7 @@ Simulation eines IBIS-Bordcomputers (Siemens/HPW)
 
 Derzeit wird ein Atmel ATmega16-Mikrocontroller verwendet, dieser genügt zur Ansteuerung der Matrix-Tastatur (3x8-Matrix) und des LCD-Displays (HD44780 im 4-Bit-Modus) und bietet genug Reserven für Erweiterungen (Magnetkartenleser, Verbindung mit dem PC, Helligkeits- und Kontraststeuerung).
 
-Der Flash-Speicher von 16 KB genügt für das Münchner U-Bahnnetz (7 Linien und ca. 100 Routen). Für größere Netze wird ein Controller mit mehr Speicher benötigt (z.B. ATmega644PA).
+Der Flash-Speicher von 16 KB genügt für das Münchner U-Bahnnetz (8 Linien, 100 Bahnhöfe und 102 Routen). Für größere Netze wird ein Controller mit mehr Speicher benötigt (z.B. ATmega644PA).
 
 #### Belegung der Ports (in der Software änderbar)
 
